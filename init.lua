@@ -1,0 +1,7 @@
+require("config.options")
+require("config.keymaps")
+require("plugins.mini")
+require("plugins.treesitter")
+require("plugins.lsp")
+require("plugins.dap")
+require("config.autocmds")
