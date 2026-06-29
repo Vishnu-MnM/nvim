@@ -58,6 +58,11 @@ vim.lsp.config("gopls", {
     },
 })
 
+vim.lsp.config("ruff", {})
+vim.lsp.config("ty", {})
+vim.lsp.config("jdtls", {})
+vim.lsp.config("ts_ls", {})
+
 vim.lsp.enable({
     "lua_ls",
     "ruff",
