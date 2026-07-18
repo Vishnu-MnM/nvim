@@ -1,9 +1,6 @@
 vim.pack.add({ "https://github.com/echasnovski/mini.nvim" }, { load = true })
 
 require("mini.icons").setup()
-
-vim.cmd.colorscheme("miniwinter")
-
 require("mini.animate").setup()
 require("mini.cursorword").setup()
 

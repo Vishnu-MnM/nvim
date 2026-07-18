@@ -1,3 +1,4 @@
+vim.cmd.colorscheme "catppuccin"
 require("config.options")
 require("config.keymaps")
 require("plugins.mini")
