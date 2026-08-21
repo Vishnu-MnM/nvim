@@ -19,6 +19,16 @@ vim.lsp.config("gopls", {
     },
 })
 
+vim.lsp.config('golangci_lint_ls', {
+	cmd = {'golangci-lint-langserver'},
+	root_markers = { '.git', 'go.mod' },
+	init_options = {
+		command = {
+			'golangci-lint', 'run', '--output.json.path', 'stdout', '--show-stats=false', '--issues-exit-code=1'
+		},
+	},
+})
+
 vim.lsp.config("nushell", {
     cmd = { "nu", "--lsp" },
     filetypes = { "nu" },
