@@ -1,4 +1,4 @@
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme("catppuccin")
 require("plugins.lspconfig")
 require("plugins.mini")
 require("plugins.treesitter")

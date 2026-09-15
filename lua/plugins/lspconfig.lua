@@ -1,6 +1,6 @@
 vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" }, { load = true, confirm = false })
 
-vim.lsp.enable({ "lua_ls", "ruff", "ty", "gopls", "rust_analyzer", "nushell" })
+vim.lsp.enable({ "lua_ls", "ruff", "ty", "gopls", "rust_analyzer", "bashls" })
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -9,6 +9,11 @@ vim.diagnostic.config({
     update_in_insert = false,
     severity_sort = true,
     float = { border = "rounded", source = true },
+})
+
+vim.lsp.config("bashls", {
+    cmd = { 'bash-language-server', 'start' },
+    filetypes = { 'bash', 'sh' }
 })
 
 vim.lsp.config("gopls", {
@@ -27,11 +32,6 @@ vim.lsp.config('golangci_lint_ls', {
 			'golangci-lint', 'run', '--output.json.path', 'stdout', '--show-stats=false', '--issues-exit-code=1'
 		},
 	},
-})
-
-vim.lsp.config("nushell", {
-    cmd = { "nu", "--lsp" },
-    filetypes = { "nu" },
 })
 
 vim.lsp.config("lua_ls", {
