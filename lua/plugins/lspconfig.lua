@@ -11,27 +11,14 @@ vim.diagnostic.config({
     float = { border = "rounded", source = true },
 })
 
-vim.lsp.config("bashls", {
-    cmd = { 'bash-language-server', 'start' },
-    filetypes = { 'bash', 'sh' }
-})
-
 vim.lsp.config("gopls", {
     filetypes = { 'go', 'gomod', 'gowork' },
     settings = {
-        analyses = { unusedparams = true },
-        staticcheck = true,
+        gopls = {
+            analyses = { unusedparams = true },
+            staticcheck = true,
+        }
     },
-})
-
-vim.lsp.config('golangci_lint_ls', {
-	cmd = {'golangci-lint-langserver'},
-	root_markers = { '.git', 'go.mod' },
-	init_options = {
-		command = {
-			'golangci-lint', 'run', '--output.json.path', 'stdout', '--show-stats=false', '--issues-exit-code=1'
-		},
-	},
 })
 
 vim.lsp.config("lua_ls", {
@@ -57,16 +44,9 @@ vim.lsp.config("ruff", {
             configurationPreference = "editorFirst",
             lineLength = 100,
             fixAll = true,
-            ["indent-width"] = 4,
             showSyntaxErrors = true,
             lint = {
                 preview = true,
-            },
-            format = {
-                backend = "internal",
-                ["quote-style"] = "double",
-                ["indent-style"] = "space",
-                ["line-ending"] = "auto",
             },
         },
     }
@@ -78,7 +58,7 @@ vim.lsp.config("ty", {
             rules = {
                 ["division-by-zero"] = "ignore",
                 ["index-out-of-bounds"] = "ignore",
-                ["possibly-unsolved-reference"] = "warn",
+                ["possibly-unresolved-reference"] = "warn",
             },
         },
     },
@@ -112,11 +92,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Inlay hints display inferred types, etc.
         if client:supports_method("inlayHint/resolve") then
             vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
-        end
-        -- Completion can be invoked via <C-x> and <C-o>. It displays a list of
-        -- names inferred from the context. (e.g. method names, variables, etc)
-        if client:supports_method("textDocument/completion") then
-            vim.lsp.completion.enable(true, client.id, ev.buf, {})
         end
     end,
 })
