@@ -1,6 +1,6 @@
 vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" }, { load = true, confirm = false })
 
-vim.lsp.enable({ "lua_ls", "ruff", "ty", "gopls", "rust_analyzer", "bashls" })
+vim.lsp.enable({ "lua_ls", "ruff", "ty", "gopls", "rust_analyzer", "bashls", "golangci_lint_ls"})
 
 vim.diagnostic.config({
     virtual_text = true,

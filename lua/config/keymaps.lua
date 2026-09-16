@@ -1,6 +1,3 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 local map = vim.keymap.set
 
 map("n", "<leader>cd", "<cmd>cd %:p:h<CR>", { desc = "Change directory to file" })
@@ -11,7 +8,7 @@ map("n", "<leader>ff", function() MiniPick.builtin.files() end, { desc = "Find F
 map("n", "<leader>fg", function() MiniPick.builtin.grep_live() end, { desc = "Live Grep" })
 map("n", "<leader>fb", function() MiniPick.builtin.buffers() end, { desc = "Buffers" })
 map("n", "<leader>fh", function() MiniPick.builtin.help() end, { desc = "Help" })
-map("n", "<leader>fs", function() MiniExtra.pickers.lsp({ scope = "document_scope" }) end, { desc = "Symbols" })
+map("n", "<leader>fs", function() MiniExtra.pickers.lsp({ scope = "document_symbol" }) end, { desc = "Symbols" })
 map("n", "<leader>bd", function() MiniBufremove.delete() end, { desc = "Buffer Delete" })
 map("n", "<leader>bn", "<cmd>enew <CR>", { desc = "Open new buffer" })
 map("n", "<leader>ts", function() MiniTrailspace.trim() end, { desc = "Remove TrailSpace" })
