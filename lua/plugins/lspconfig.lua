@@ -73,11 +73,15 @@ vim.lsp.config("ruff", {
 })
 
 vim.lsp.config("ty", {
-    rules = {
-        ["division-by-zero"] = "ignore",
-        ["index-out-of-bounds"] = "ignore",
-        ["possibly-unresolved-reference"] = "warn",
-    }
+    settings = {
+        ty = {
+            rules = {
+                ["division-by-zero"] = "ignore",
+                ["index-out-of-bounds"] = "ignore",
+                ["possibly-unsolved-reference"] = "warn",
+            },
+        },
+    },
 })
 
 vim.lsp.config("rust_analyzer", {
@@ -101,8 +105,7 @@ vim.lsp.config("rust_analyzer", {
     },
 })
 
-
--- Rust analyzer features
+-- LSP Attach AutoCommand for all LSPs.
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
         local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
@@ -118,23 +121,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
--- vim.api.nvim_create_autocmd ("LspAttach", {
---     callback = function(args)
---         local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
---         if not client:supports_method ("textDocument/hover") then return end
---
---         local group = vim.api.nvim_create_augroup("lsp-hover-" .. args.buf, { clear = true })
---         vim.api.nvim_create_autocmd("CursorHold", {
---             group = group,
---             buffer = args.buf,
---             callback = function()
---                 -- prefer the diagnostic on this line over hoverdocs, if any
---                 if #vim.diagnostic.get(0, { lnum = vim.api.nvim_win_get_cursor(0)[1]-1 }) > 0 then
---                     vim.diagnostic.open_float(nil, {focus = false})
---                 else
---                     vim.lsp.buf.hover({ focus = false })
---                 end
---             end,
---         })
---     end,
--- })
