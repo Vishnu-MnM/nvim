@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 --Navigation
-map("n", "<C-j>", "<C-w>j", { desc = "Split up" })
-map("n", "<C-k>", "<C-w>k", { desc = "Split down" })
+map("n", "<C-j>", "<C-w>j", { desc = "Split down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Split up" })
 map("n", "<C-l>", "<C-w>l", { desc = "Split right" })
 map("n", "<C-h>", "<C-w>h", { desc = "Split left" })

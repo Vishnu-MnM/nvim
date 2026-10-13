@@ -17,7 +17,11 @@ vim.lsp.config("gopls", {
         gopls = {
             analyses = { unusedparams = true },
             staticcheck = true,
-        }
+            hints = {
+                assignVariableTypes = true,
+                parameterNames = true,
+            },
+        },
     },
 })
 
@@ -55,10 +59,12 @@ vim.lsp.config("ruff", {
 vim.lsp.config("ty", {
     settings = {
         ty = {
-            rules = {
-                ["division-by-zero"] = "ignore",
-                ["index-out-of-bounds"] = "ignore",
-                ["possibly-unresolved-reference"] = "warn",
+            configuration = {
+                rules = {
+                    ["division-by-zero"] = "ignore",
+                    ["index-out-of-bounds"] = "ignore",
+                    ["possibly-unresolved-reference"] = "warn",
+                },
             },
         },
     },
@@ -90,9 +96,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
         local client = assert(vim.lsp.get_client_by_id(ev.data.client_id))
         -- Inlay hints display inferred types, etc.
-        if client:supports_method("inlayHint/resolve") then
+        if client:supports_method("textDocument/inlayHint") then
             vim.lsp.inlay_hint.enable(true, { bufnr = ev.buf })
         end
     end,
 })
-
