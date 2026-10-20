@@ -1,6 +1,7 @@
 vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" }, { load = true, confirm = false })
+vim.pack.add({'https://github.com/nanotee/sqls.nvim'})
 
-vim.lsp.enable({ "lua_ls", "ruff", "ty", "gopls", "rust_analyzer", "bashls", "golangci_lint_ls"})
+vim.lsp.enable({ "lua_ls", "ruff", "ty", "gopls", "rust_analyzer", "bashls", "golangci_lint_ls", "sqls"})
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -89,6 +90,22 @@ vim.lsp.config("rust_analyzer", {
             },
         },
     },
+})
+
+vim.lsp.config("sqls", {
+    settings = {
+        sqls = {
+            connections = {
+                {
+                    driver = "sqlite3",
+                    dataSourceName = vim.fn.expand("~/databases/main.db"),
+                },
+            },
+        },
+    },
+    on_attach = function(client, bufnr)
+        require("sqls").on_attach(client, bufnr)
+    end,
 })
 
 -- LSP Attach AutoCommand for all LSPs.

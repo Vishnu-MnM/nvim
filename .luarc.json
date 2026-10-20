@@ -1,0 +1,14 @@
+{
+  "runtime.version": "LuaJIT",
+  "diagnostics.globals": [
+    "vim",
+    "MiniFiles",
+    "MiniPick",
+    "MiniExtra",
+    "MiniBufremove",
+    "MiniTrailspace",
+    "MiniNotify"
+  ],
+  "workspace.checkThirdParty": "Disable",
+  "workspace.library": ["/opt/homebrew/share/nvim/runtime"]
+}
