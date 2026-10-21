@@ -10,5 +10,8 @@
     "MiniNotify"
   ],
   "workspace.checkThirdParty": "Disable",
-  "workspace.library": ["/opt/homebrew/share/nvim/runtime"]
+  "workspace.library": [
+    "/opt/homebrew/share/nvim/runtime",
+    "~/.local/share/nvim/site/pack/core/opt"
+  ]
 }

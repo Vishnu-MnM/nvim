@@ -18,7 +18,7 @@ require("mini.trailspace").setup()
 local hipatterns = require("mini.hipatterns")
 hipatterns.setup({
     highlighters = {
-        -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE', 'BUFFER'
+        -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
         fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
         hack = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
         todo = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
@@ -35,10 +35,10 @@ require("mini.comment").setup()
 require("mini.completion").setup()
 require("mini.pairs").setup()
 require("mini.surround").setup()
-local gen_loader = require("mini.snippets").gen_loader
-require("mini.snippets").setup({
+local minisnippets = require("mini.snippets")
+minisnippets.setup({
     snippets = {
-        gen_loader.from_lang(),
+        minisnippets.gen_loader.from_lang(),
     },
 })
 
@@ -90,13 +90,12 @@ miniclue.setup({
         -- `s` key
         { mode = { 'n', 'x' }, keys = 's' },
 
-        -- `a` key
+        -- `a` and `i` keys (textobjects)
         { mode = { 'n', 'x' }, keys = 'a' },
         { mode = { 'n', 'x' }, keys = 'i' },
     },
 
     clues = {
-        -- Enhance this by adding descriptions for <Leader> mapping groups
         miniclue.gen_clues.square_brackets(),
         miniclue.gen_clues.builtin_completion(),
         miniclue.gen_clues.g(),
@@ -105,7 +104,6 @@ miniclue.setup({
         miniclue.gen_clues.windows(),
         miniclue.gen_clues.z(),
         { mode = "n", keys = "<leader>f", desc = "Find" },
-        { mode = "n", keys = "<leader>s", desc = "Split" },
         { mode = "n", keys = "<leader>b", desc = "Buffer" },
         { mode = "n", keys = "<leader>d", desc = "Debug" },
         { mode = "n", keys = "<leader>l", desc = "LSP" },

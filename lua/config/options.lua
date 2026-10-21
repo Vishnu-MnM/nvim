@@ -24,19 +24,17 @@ opt.sidescrolloff = 10
 --search opts
 opt.ignorecase = true
 opt.smartcase = true
-opt.hlsearch = true
 opt.inccommand = "split"
 
 --file opts
 opt.swapfile = false
-opt.backup = false
 opt.undofile = true
 
 --time opts
 opt.updatetime = 250
 opt.timeoutlen = 300
 
---search opts
+--completion opts
 opt.completeopt = "menu,menuone,noselect,popup,fuzzy"
 opt.pumheight = 10
 

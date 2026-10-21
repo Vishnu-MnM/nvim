@@ -1,7 +1,7 @@
 vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" }, { load = true, confirm = false })
-vim.pack.add({'https://github.com/nanotee/sqls.nvim'})
+vim.pack.add({ "https://github.com/nanotee/sqls.nvim" })
 
-vim.lsp.enable({ "lua_ls", "ruff", "ty", "gopls", "rust_analyzer", "bashls", "golangci_lint_ls", "sqls"})
+vim.lsp.enable({ "lua_ls", "ruff", "ty", "gopls", "rust_analyzer", "bashls", "golangci_lint_ls", "sqls" })
 
 vim.diagnostic.config({
     virtual_text = true,
@@ -26,24 +26,7 @@ vim.lsp.config("gopls", {
     },
 })
 
-vim.lsp.config("lua_ls", {
-    settings = {
-        Lua = {
-            completion = { enable = true },
-            runtime = { version = "LuaJIT" },
-            workspace = {
-                checkThirdParty = "Disable",
-                library = vim.api.nvim_get_runtime_file("", true),
-            },
-            diagnostics = { globals = { "vim" } },
-        },
-    },
-})
-
 vim.lsp.config("ruff", {
-    cmd = { 'ruff', 'server' },
-    filetypes = { 'python' },
-    root_markers = { 'pyproject.toml', 'ruff.toml', '.ruff.toml', '.git' },
     init_options = {
         settings = {
             configurationPreference = "editorFirst",
