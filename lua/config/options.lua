@@ -15,7 +15,7 @@ opt.wrap = true
 opt.breakindent = true
 
 --aesthetics
-opt.termguicolors = false -- use the terminal's own color palette
+opt.termguicolors = true -- enable 24-bit colors for the dms theme
 opt.cursorline = true
 opt.signcolumn = "yes"
 opt.scrolloff = 10
