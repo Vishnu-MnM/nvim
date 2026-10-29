@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("default")
 require("plugins.lspconfig")
 require("plugins.mini")
 require("plugins.treesitter")

@@ -15,7 +15,7 @@ opt.wrap = true
 opt.breakindent = true
 
 --aesthetics
-opt.termguicolors = true
+opt.termguicolors = false -- use the terminal's own color palette
 opt.cursorline = true
 opt.signcolumn = "yes"
 opt.scrolloff = 10
